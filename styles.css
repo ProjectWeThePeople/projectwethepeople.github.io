@@ -1,0 +1,36 @@
+/* Ensure body takes full height and has black background */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container for content with white border */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* The content frame with white border */
+.content {
+    background-color: black;
+    border: 2px solid white;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px; /* Restrict maximum width for larger screens */
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        width: 95%; /* Adjust the width on smaller screens */
+    }
+}
