@@ -11,6 +11,16 @@ Probably through a series of "if this" then "this" statements combined with "if 
 Sounds fun. 
 
 
-Each truth will represent a "radian" of their reality. A rule that always works, a rule that is always true. The collection of those truth radians will form a circle. 
+Each truth will represent a "radian" of their reality. A rule that always works, a rule that is always true. The collection of those truth radians will form a circle.  
 
-This software will provide a user interface that enables the creation and sharing of truth circles amongst humanity. It will keep track of each users' circle, what connections were made to their circle, and when their circle changed, if it changed.  
+This software will provide a user interface that enables the creation and sharing of truth circles amongst humanity. It will keep track of each users' circles, what connections were made to their circles, and when their circles changed, if they changed.  
+
+Things we are going to need but dont have yet: *Would be nice if I had some help.*
+
+All the usual pages for user authentication.
+A database system that uses a blockchain to presevere, verify, and store changes made by every one. 
+Servers to host the program. 
+Software that faciliates the creation of the user circles, I think I will be using Godot for this. 
+
+
+
