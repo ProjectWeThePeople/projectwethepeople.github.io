@@ -1,4 +1,4 @@
-# ProjectWeThePeople
+# Project We The People
 
 The purpose of this software is to unite humanity under a banner that represents all that is good in this world. 
 
