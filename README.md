@@ -11,9 +11,7 @@ For now, the first goal is to provide a user interface that enables the creation
 
 Sounds fun.
 
-Things we are going to need but dont have yet: *Would be nice if I had some help.*
-
 User authentication.
 A database system that uses a blockchain to presevere, verify, and store changes made by every user.
-Servers to host the program.
+Server hosting.
 Software that faciliates the creation of the user circles, I think I will be using Godot for this.
