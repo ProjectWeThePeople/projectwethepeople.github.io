@@ -1,0 +1,162 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Belief Circles System - UML Class Diagram
+
+This system enables users to create "truth circles" composed of belief statements called "radians". 
+Users can share circles, create connections, and explore their belief systems non-linearly.
+
+Tech Stack: React (Frontend) + Ruby on Rails (Backend API)
+Hosting: Live hosting with download capability, updates, and sharing features</help_text>
+
+<!-- Core Domain Models -->
+<element><id>UMLClass</id><coordinates><x>100</x><y>100</y><w>220</w><h>200</h></coordinates><panel_attributes>User
+--
+-id: Long
+-username: String
+-email: String  
+-password_hash: String
+-created_at: DateTime
+-updated_at: DateTime
+-profile_visibility: Enum
+--
++create_circle(): Circle
++share_circle(circle_id): void
++connect_to_user(user_id): Connection
++get_circles(): List&lt;Circle&gt;
++update_profile(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>400</x><y>100</y><w>220</w><h>220</h></coordinates><panel_attributes>Circle
+--
+-id: Long
+-user_id: Long
+-title: String
+-description: String
+-is_public: Boolean
+-color_theme: String
+-created_at: DateTime
+-updated_at: DateTime
+-version: Integer
+--
++add_radian(content): Radian
++remove_radian(radian_id): void
++share_with_user(user_id): Share
++publish(): void
++create_snapshot(): CircleSnapshot
++get_radians(): List&lt;Radian&gt;</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>700</x><y>100</y><w>200</w><h>180</h></coordinates><panel_attributes>Radian
+--
+-id: Long
+-circle_id: Long
+-content: Text
+-position_angle: Float
+-created_at: DateTime
+-updated_at: DateTime
+-is_archived: Boolean
+--
++update_content(text): void
++move_position(angle): void
++archive(): void
++restore(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>100</x><y>400</y><w>200</w><h>160</h></coordinates><panel_attributes>Connection
+--
+-id: Long
+-from_user_id: Long
+-to_user_id: Long
+-connection_type: Enum
+-created_at: DateTime
+-status: Enum
+--
++accept(): void
++decline(): void
++block(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>400</x><y>400</y><w>200</w><h>160</h></coordinates><panel_attributes>Share
+--
+-id: Long
+-circle_id: Long
+-shared_by_user_id: Long
+-shared_with_user_id: Long
+-permission_level: Enum
+-created_at: DateTime
+--
++revoke_access(): void
++update_permissions(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>700</x><y>400</y><w>200</w><h>140</h></coordinates><panel_attributes>CircleSnapshot
+--
+-id: Long
+-circle_id: Long
+-snapshot_data: JSON
+-version: Integer
+-created_at: DateTime
+--
++restore_version(): Circle</panel_attributes><additional_attributes></additional_attributes></element>
+
+<!-- API Layer -->
+<element><id>UMLClass</id><coordinates><x>100</x><y>650</y><w>180</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Controller&gt;&gt;
+UsersController
+--
++create(): User
++show(): User
++update(): User
++index(): List&lt;User&gt;</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>300</x><y>650</y><w>180</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Controller&gt;&gt;
+CirclesController
+--
++create(): Circle
++show(): Circle
++update(): Circle
++destroy(): void
++publish(): void
++share(): Share</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>500</x><y>650</y><w>180</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Controller&gt;&gt;
+RadiansController
+--
++create(): Radian
++update(): Radian
++destroy(): void
++reorder(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<!-- Frontend Components -->
+<element><id>UMLClass</id><coordinates><x>100</x><y>850</y><w>160</w><h>100</h></coordinates><panel_attributes>&lt;&lt;React Component&gt;&gt;
+CircleViewer
+--
++render_circle(): JSX
++handle_radian_click(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>280</x><y>850</y><w>160</w><h>100</h></coordinates><panel_attributes>&lt;&lt;React Component&gt;&gt;
+RadianEditor  
+--
++render_editor(): JSX
++save_radian(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<element><id>UMLClass</id><coordinates><x>460</x><y>850</y><w>160</w><h>100</h></coordinates><panel_attributes>&lt;&lt;React Component&gt;&gt;
+CircleManager
+--
++render_circles(): JSX
++create_new_circle(): void</panel_attributes><additional_attributes></additional_attributes></element>
+
+<!-- Relationships -->
+<element><id>Relation</id><coordinates><x>310</x><y>170</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+owns &gt;</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element>
+
+<element><id>Relation</id><coordinates><x>610</x><y>170</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..*
+contains &gt;</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element>
+
+<element><id>Relation</id><coordinates><x>200</x><y>290</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element>
+
+<element><id>Relation</id><coordinates><x>500</x><y>310</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element>
+
+<element><id>Relation</id><coordinates><x>610</x><y>310</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;10;90;90</additional_attributes></element></diagram>
